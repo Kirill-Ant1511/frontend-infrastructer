@@ -9,7 +9,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "eslint --fix .",
     "preview": "vite preview",
     "lint-staged": "lint-staged",
     "ts-check": "tsc --noEmit",

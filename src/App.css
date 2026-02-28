@@ -1,42 +1,189 @@
 #root {
     max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+:root {
+    --bg: #0f1724;
+    --card: #0b1220;
+    --muted: #9aa4b2;
+    --accent: #7c5cff;
+    --glass: rgba(255, 255, 255, 0.04);
+}
+
+body {
+    background: linear-gradient(180deg, #07102a 0%, #081226 100%);
+    color: #e6eef8;
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        'Segoe UI',
+        Roboto,
+        'Helvetica Neue',
+        Arial;
+}
+
+.notes-root {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.02),
+        rgba(255, 255, 255, 0.01)
+    );
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 6px 30px rgba(2, 6, 23, 0.6);
+}
+
+.notes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.notes-header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.btn {
+    background: var(--glass);
+    color: var(--muted);
+    border: 0;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn:hover {
+    filter: brightness(1.05);
+}
+.btn.primary {
+    background: linear-gradient(90deg, var(--accent), #5aa3ff);
+    color: white;
+}
+.btn.danger {
+    background: transparent;
+    color: #ff7b7b;
+}
+
+.notes-main {
+    display: flex;
+    gap: 20px;
+}
+.notes-list {
+    width: 360px;
+    max-height: 80vh;
+    overflow: auto;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.025);
+}
+.editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+}
+.editor.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 200px;
+}
+.note-title {
+    font-size: 1.05rem;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: transparent;
+    color: inherit;
+}
+.note-content {
+    flex: 1;
+    resize: vertical;
+    min-height: 360px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: transparent;
+    color: inherit;
+}
+.editor-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.note-item {
+    position: relative;
+    padding: 10px 44px 10px 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.note-item:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+.note-item.active {
+    outline: 2px solid rgba(124, 92, 255, 0.15);
+    background: linear-gradient(90deg, rgba(124, 92, 255, 0.06), transparent);
+}
+.note-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+}
+.note-title {
+    font-weight: 600;
+}
+.note-time {
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+.note-snippet {
+    color: var(--muted);
+    margin-top: 6px;
+    font-size: 0.9rem;
+}
+.note-delete {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
+    border: 0;
+    color: #ff8484;
+    cursor: pointer;
+}
+.note-delete:hover {
+    background: rgba(255, 80, 80, 0.06);
+    color: #ff6b6b;
+}
+
+.empty-list {
+    color: var(--muted);
+    padding: 18px;
     text-align: center;
 }
 
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-}
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
+@media (max-width: 1000px) {
+    .notes-main {
+        flex-direction: column;
     }
-    to {
-        transform: rotate(360deg);
+    .notes-list {
+        width: 100%;
+        max-height: 260px;
     }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-        animation: logo-spin infinite 20s linear;
-    }
-}
-
-.card {
-    padding: 2em;
-}
-
-.read-the-docs {
-    color: #888;
 }
