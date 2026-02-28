@@ -6,13 +6,23 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview",
+    "lint-staged": "lint-staged",
+    "ts-check": "tsc --noEmit",
+    "check": "yarn format:check && yarn lint && yarn run ts-check",
+    "postinstall": "cp tools/githooks/* .git/hooks && chmod +x .git/hooks/* || true",
+    "deploy": "yarn run build && gh-pages -d dist"
   },
   "dependencies": {
+    "axios": "^1.13.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -22,7 +32,10 @@
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
+    "gh-pages": "^6.3.0",
     "globals": "^16.5.0",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1",
     "vite": "^7.3.1"
   }
 }
