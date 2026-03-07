@@ -1,0 +1,8 @@
+{
+  "name": "Kirill Antonenko",
+  "project": {
+    "name": "notes",
+    "version": "0.1.2",
+    "description": "A simple note-taking application built with React, Vite and Copilot)."
+  }
+}

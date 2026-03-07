@@ -3,26 +3,38 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "yarn@4.13.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "format": "prettier --write --ignore-unknown",
+    "format:check": "prettier --check",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "preview": "vite preview",
+    "lint-staged": "lint-staged",
+    "ts-check": "tsc --noEmit",
+    "check": "yarn format && yarn lint:fix && yarn run ts-check",
+    "postinstall": "cp tools/githooks/* .git/hooks && chmod +x .git/hooks/* || true",
+    "deploy": "yarn run build && gh-pages -d dist"
   },
   "dependencies": {
+    "eslint": "^10.0.3",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "typescript": "^5.9.3"
+    "react-colorful": "^5.6.1",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^10.0.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
-    "eslint": "^9.39.1",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^16.5.0",
+    "gh-pages": "^6.3.0",
+    "globals": "^17.4.0",
+    "lint-staged": "^16.3.2",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1",
     "vite": "^7.3.1"
   }
 }

@@ -24,4 +24,3 @@ indent_size = 4
 # Настройки для файлов .json
 [*.json]
 indent_size = 2
-indent_style = tab
