@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import { useEffect, useState } from 'react';
 import '../App.css';
 import NoteEditor from './NoteEditor';
@@ -13,7 +9,8 @@ function loadNotes() {
     try {
         const raw = localStorage.getItem(STORAGE_KEY);
         return raw ? JSON.parse(raw) : [];
-    } catch (_) {
+    } catch (e) {
+        console.error('Error loading notes from localStorage:', e);
         return [];
     }
 }

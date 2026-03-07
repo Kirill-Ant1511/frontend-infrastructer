@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 
@@ -8,6 +9,11 @@ export default tseslint.config(
   // Включает рекомендуемые настройки для typescript
   ...tseslint.configs.recommended,
   {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
     rules: {
       // Запрещает переопределение констант
       "no-const-assign": 'error',

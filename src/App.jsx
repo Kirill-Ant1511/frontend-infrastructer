@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { HexColorPicker } from 'react-colorful';
 import './App.css';
 import NotesApp from './components/NotesApp';
+
+import { HexColorPicker } from 'react-colorful';
 
 export default function App() {
     const [color, setColor] = useState('#7c5cff');
