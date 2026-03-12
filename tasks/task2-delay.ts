@@ -6,7 +6,10 @@
 - Промис резолвится через ms миллисекунд
 */
 
-function delay(ms) {
+function delay(ms: number): Promise<void> {
+  if(typeof ms !== 'number') {
+    throw new TypeError(`Expected a number, but got ${typeof ms}`);
+  }
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
@@ -14,4 +17,4 @@ function delay(ms) {
   });
 }
 
-delay(500).then(() => console.log("Готово через 500мс"));
+delay("asdf").then(() => console.log("Готово через 500мс"));

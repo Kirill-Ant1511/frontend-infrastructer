@@ -7,15 +7,18 @@
 - Немедленно реджектится при первой ошибке
 */
 
-function promiseAll(promises: any[]) {
+function promiseAll<T>(promises: T[]): Promise<T[]> {
+  if(!Array.isArray(promises)) {
+    throw new TypeError('Expected an array');
+  }
   return new Promise((resolve, reject) => {
     // массив для хранения результатов
-    const results = [];
+    const results: T[] = [];
     // счетчик для отслеживания количества выполненных промисов в получения результатов в правильном порядке
-    let index = 0;
+    let index: number = 0;
     // флаг для отслеживания, был ли уже реджект
-    let isRejected = false;
-    if(Array.isArray(promises) && promises.every(p => p instanceof Promise)) {
+    let isRejected: boolean = false;
+    if(promises.every(p => p instanceof Promise)) {
       if(promises.length === 0) {
         resolve(results);
         return;
@@ -50,7 +53,5 @@ function promiseAll(promises: any[]) {
 
 const p1 = new Promise(res => setTimeout(() => res('first'), 100));
 const p2 = new Promise(res => setTimeout(() => res('second'), 10));
-
 promiseAll([p1, p2]).then(console.log);
-
-// Promise.all([1, 2]).then(console.log); // [1, 2] - Promise.all также поддерживает не промисы, а обычные значения, которые он просто пропускает в результат.
+promiseAll([1, 2]).then(console.log).catch(console.error);
